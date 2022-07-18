@@ -1,0 +1,480 @@
+Metadata-Version: 2.1
+Name: dvc
+Version: 2.13.0
+Summary: Git for data scientists - manage your code and data together
+Home-page: http://dvc.org
+Download-URL: https://github.com/iterative/dvc
+Author: Dmitry Petrov
+Author-email: dmitry@dvc.org
+Maintainer: Iterative
+Maintainer-email: support@dvc.org
+License: Apache License 2.0
+Project-URL: Documentation, https://dvc.org/doc
+Project-URL: Source, https://github.com/iterative/dvc
+Keywords: data-science, data-version-control, machine-learning, git,developer-tools, reproducibility, collaboration, ai
+Classifier: Development Status :: 4 - Beta
+Classifier: Programming Language :: Python :: 3
+Classifier: Programming Language :: Python :: 3.8
+Classifier: Programming Language :: Python :: 3.9
+Classifier: Programming Language :: Python :: 3.10
+Requires-Python: >=3.8
+Description-Content-Type: text/x-rst
+License-File: LICENSE
+Requires-Dist: colorama (>=0.3.9)
+Requires-Dist: configobj (>=5.0.6)
+Requires-Dist: voluptuous (>=0.11.7)
+Requires-Dist: requests (>=2.22.0)
+Requires-Dist: grandalf (==0.6)
+Requires-Dist: distro (>=1.3.0)
+Requires-Dist: appdirs (>=1.4.3)
+Requires-Dist: ruamel.yaml (>=0.17.11)
+Requires-Dist: toml (>=0.10.1)
+Requires-Dist: funcy (>=1.14)
+Requires-Dist: pathspec (<0.10.0,>=0.9.0)
+Requires-Dist: shortuuid (>=0.5.0)
+Requires-Dist: tqdm (<5,>=4.63.1)
+Requires-Dist: packaging (>=19.0)
+Requires-Dist: zc.lockfile (>=1.2.1)
+Requires-Dist: flufl.lock (>=5)
+Requires-Dist: networkx (>=2.5)
+Requires-Dist: psutil (>=5.8.0)
+Requires-Dist: pydot (>=1.2.4)
+Requires-Dist: flatten-dict (<1,>=0.4.1)
+Requires-Dist: tabulate (>=0.8.7)
+Requires-Dist: pygtrie (>=2.3.2)
+Requires-Dist: dpath (<3,>=2.0.2)
+Requires-Dist: shtab (<2,>=1.3.4)
+Requires-Dist: rich (>=10.13.0)
+Requires-Dist: python-benedict (>=0.24.2)
+Requires-Dist: pyparsing (>=2.4.7)
+Requires-Dist: typing-extensions (>=3.7.4)
+Requires-Dist: fsspec[http] (>=2021.10.1)
+Requires-Dist: aiohttp-retry (>=2.4.5)
+Requires-Dist: scmrepo (==0.0.25)
+Requires-Dist: dvc-render (==0.0.6)
+Requires-Dist: dvclive (>=0.7.3)
+Requires-Dist: dvc-data (==0.0.23)
+Requires-Dist: importlib-resources (>=5.2.2) ; python_version < "3.9"
+Provides-Extra: all
+Requires-Dist: adlfs (>=2021.10.0) ; extra == 'all'
+Requires-Dist: azure-identity (>=1.4.0) ; extra == 'all'
+Requires-Dist: knack ; extra == 'all'
+Requires-Dist: pydrive2[fsspec] (>=1.10.1) ; extra == 'all'
+Requires-Dist: gcsfs (>=2021.11.1) ; extra == 'all'
+Requires-Dist: pyarrow (>=1) ; extra == 'all'
+Requires-Dist: fsspec[arrow] ; extra == 'all'
+Requires-Dist: ossfs (>=2021.8.0) ; extra == 'all'
+Requires-Dist: s3fs[boto3] (>=2022.02.0) ; extra == 'all'
+Requires-Dist: aiobotocore[boto3] (>2) ; extra == 'all'
+Requires-Dist: bcrypt ; extra == 'all'
+Requires-Dist: sshfs[bcrypt] (>=2022.6.0) ; extra == 'all'
+Requires-Dist: webdav4 (>=0.9.3) ; extra == 'all'
+Provides-Extra: azure
+Requires-Dist: adlfs (>=2021.10.0) ; extra == 'azure'
+Requires-Dist: azure-identity (>=1.4.0) ; extra == 'azure'
+Requires-Dist: knack ; extra == 'azure'
+Provides-Extra: dev
+Requires-Dist: adlfs (>=2021.10.0) ; extra == 'dev'
+Requires-Dist: azure-identity (>=1.4.0) ; extra == 'dev'
+Requires-Dist: knack ; extra == 'dev'
+Requires-Dist: pydrive2[fsspec] (>=1.10.1) ; extra == 'dev'
+Requires-Dist: gcsfs (>=2021.11.1) ; extra == 'dev'
+Requires-Dist: pyarrow (>=1) ; extra == 'dev'
+Requires-Dist: fsspec[arrow] ; extra == 'dev'
+Requires-Dist: ossfs (>=2021.8.0) ; extra == 'dev'
+Requires-Dist: s3fs[boto3] (>=2022.02.0) ; extra == 'dev'
+Requires-Dist: aiobotocore[boto3] (>2) ; extra == 'dev'
+Requires-Dist: bcrypt ; extra == 'dev'
+Requires-Dist: sshfs[bcrypt] (>=2022.6.0) ; extra == 'dev'
+Requires-Dist: webdav4 (>=0.9.3) ; extra == 'dev'
+Requires-Dist: tpi[ssh] (>=2.1.0) ; extra == 'dev'
+Requires-Dist: dvc-ssh (==0.0.1a0) ; extra == 'dev'
+Requires-Dist: pytest (==7.1.2) ; extra == 'dev'
+Requires-Dist: pytest-cov (==3.0.0) ; extra == 'dev'
+Requires-Dist: pytest-xdist (==2.5.0) ; extra == 'dev'
+Requires-Dist: pytest-mock (==3.8.2) ; extra == 'dev'
+Requires-Dist: pytest-lazy-fixture (==0.6.3) ; extra == 'dev'
+Requires-Dist: flaky (==3.7.0) ; extra == 'dev'
+Requires-Dist: mock (==4.0.3) ; extra == 'dev'
+Requires-Dist: pytest-timeout (==2.1.0) ; extra == 'dev'
+Requires-Dist: filelock (==3.7.1) ; extra == 'dev'
+Requires-Dist: pylint (==2.14.4) ; extra == 'dev'
+Requires-Dist: pylint-pytest (==1.1.2) ; extra == 'dev'
+Requires-Dist: pylint-plugin-utils (==0.7) ; extra == 'dev'
+Requires-Dist: mypy (==0.961) ; extra == 'dev'
+Requires-Dist: types-requests (>=2.27.15) ; extra == 'dev'
+Requires-Dist: types-tabulate (>=0.8.6) ; extra == 'dev'
+Requires-Dist: types-toml (>=0.10.4) ; extra == 'dev'
+Requires-Dist: dvclive[image] (>=0.7.3) ; extra == 'dev'
+Requires-Dist: beautifulsoup4 (==4.11.1) ; extra == 'dev'
+Requires-Dist: dvc-data[cli] ; extra == 'dev'
+Requires-Dist: pytest-docker (==0.11.0) ; (python_version < "3.10" or sys_platform != "win32") and extra == 'dev'
+Requires-Dist: pywin32 (>=225) ; (sys_platform == "win32") and extra == 'dev'
+Provides-Extra: gdrive
+Requires-Dist: pydrive2[fsspec] (>=1.10.1) ; extra == 'gdrive'
+Provides-Extra: gs
+Requires-Dist: gcsfs (>=2021.11.1) ; extra == 'gs'
+Provides-Extra: hdfs
+Requires-Dist: pyarrow (>=1) ; extra == 'hdfs'
+Requires-Dist: fsspec[arrow] ; extra == 'hdfs'
+Provides-Extra: oss
+Requires-Dist: ossfs (>=2021.8.0) ; extra == 'oss'
+Provides-Extra: s3
+Requires-Dist: s3fs[boto3] (>=2022.02.0) ; extra == 's3'
+Requires-Dist: aiobotocore[boto3] (>2) ; extra == 's3'
+Provides-Extra: ssh
+Requires-Dist: bcrypt ; extra == 'ssh'
+Requires-Dist: sshfs[bcrypt] (>=2022.6.0) ; extra == 'ssh'
+Provides-Extra: ssh_gssapi
+Requires-Dist: sshfs[gssapi] (>=2022.6.0) ; extra == 'ssh_gssapi'
+Provides-Extra: terraform
+Requires-Dist: tpi[ssh] (>=2.1.0) ; extra == 'terraform'
+Provides-Extra: tests
+Requires-Dist: tpi[ssh] (>=2.1.0) ; extra == 'tests'
+Requires-Dist: dvc-ssh (==0.0.1a0) ; extra == 'tests'
+Requires-Dist: pytest (==7.1.2) ; extra == 'tests'
+Requires-Dist: pytest-cov (==3.0.0) ; extra == 'tests'
+Requires-Dist: pytest-xdist (==2.5.0) ; extra == 'tests'
+Requires-Dist: pytest-mock (==3.8.2) ; extra == 'tests'
+Requires-Dist: pytest-lazy-fixture (==0.6.3) ; extra == 'tests'
+Requires-Dist: flaky (==3.7.0) ; extra == 'tests'
+Requires-Dist: mock (==4.0.3) ; extra == 'tests'
+Requires-Dist: pytest-timeout (==2.1.0) ; extra == 'tests'
+Requires-Dist: filelock (==3.7.1) ; extra == 'tests'
+Requires-Dist: pylint (==2.14.4) ; extra == 'tests'
+Requires-Dist: pylint-pytest (==1.1.2) ; extra == 'tests'
+Requires-Dist: pylint-plugin-utils (==0.7) ; extra == 'tests'
+Requires-Dist: mypy (==0.961) ; extra == 'tests'
+Requires-Dist: types-requests (>=2.27.15) ; extra == 'tests'
+Requires-Dist: types-tabulate (>=0.8.6) ; extra == 'tests'
+Requires-Dist: types-toml (>=0.10.4) ; extra == 'tests'
+Requires-Dist: dvclive[image] (>=0.7.3) ; extra == 'tests'
+Requires-Dist: beautifulsoup4 (==4.11.1) ; extra == 'tests'
+Requires-Dist: pytest-docker (==0.11.0) ; (python_version < "3.10" or sys_platform != "win32") and extra == 'tests'
+Requires-Dist: pywin32 (>=225) ; (sys_platform == "win32") and extra == 'tests'
+Provides-Extra: webdav
+Requires-Dist: webdav4 (>=0.9.3) ; extra == 'webdav'
+Provides-Extra: webdhfs_kerberos
+Requires-Dist: requests-kerberos (==0.14.0) ; extra == 'webdhfs_kerberos'
+Provides-Extra: webhdfs
+
+|Banner|
+
+`Website <https://dvc.org>`_
+• `Docs <https://dvc.org/doc>`_
+• `VS Code Extension <https://marketplace.visualstudio.com/items?itemName=Iterative.dvc>`_
+• `Blog <http://blog.dataversioncontrol.com>`_
+• `Twitter <https://twitter.com/DVCorg>`_
+• `Chat (Community & Support) <https://dvc.org/chat>`_
+• `Tutorial <https://dvc.org/doc/get-started>`_
+• `Mailing List <https://sweedom.us10.list-manage.com/subscribe/post?u=a08bf93caae4063c4e6a351f6&id=24c0ecc49a>`_
+
+|CI| |Maintainability| |Coverage| |VS Code| |DOI|
+
+|PyPI| |Packages| |Brew| |Conda| |Choco| |Snap|
+
+|
+
+**Data Version Control** or **DVC** is a command line tool and `VS Code Extension <https://marketplace.visualstudio.com/items?itemName=Iterative.dvc>`_ to help you develop reproducible machine learning projects:
+
+#. **Version** your data and models. Store them in your cloud storage but keep
+   their version info in your Git repo.
+
+#. **Iterate** fast with lightweight pipelines. When you make changes, only run
+   the steps impacted by those changes.
+
+#. **Track** experiments in your local Git repo (no servers needed).
+
+#. **Compare** any data, code, parameters, model, or performance plots
+
+#. **Share** experiments and automatically reproduce anyone's experiment.
+
+.. contents:: **Contents**
+  :backlinks: none
+
+How DVC works
+=============
+
+We encourage you to read our `Get Started <https://dvc.org/doc/get-started>`_ guide to better understand what DVC
+is and how it can fit your scenarios.
+
+The easiest (but not perfect!) *analogy* to describe it: DVC is Git (or Git-LFS to be precise) & Makefiles
+made right and tailored specifically for ML and Data Science scenarios.
+
+#. ``Git/Git-LFS`` part - DVC helps store and share data artifacts and models, connecting them with a Git repository.
+#. ``Makefile``\ s part - DVC describes how one data or model artifact was built from other data and code.
+
+DVC usually runs along with Git. Git is used as usual to store and version code (including DVC meta-files). DVC helps
+to store data and model files seamlessly out of Git, while preserving almost the same user experience as if they
+were stored in Git itself. To store and share the data cache, DVC supports multiple remotes - any cloud (S3, Azure,
+Google Cloud, etc) or any on-premise network storage (via SSH, for example).
+
+|Flowchart|
+
+The DVC pipelines (computational graph) feature connects code and data together. It is possible to explicitly
+specify all steps required to produce a model: input dependencies including data, commands to run,
+and output information to be saved. See the quick start sections below or
+the `Get Started <https://dvc.org/doc/get-started>`_ tutorial to learn more.
+
+Quick start
+===========
+
+Please read `Get Started <https://dvc.org/doc/get-started>`_ guide for a full version. Common workflow commands include:
+
++-----------------------------------+----------------------------------------------------------------------------+
+| Step                              | Command                                                                    |
++===================================+============================================================================+
+| Track data                        | | ``$ git add train.py``                                                   |
+|                                   | | ``$ dvc add images.zip``                                                 |
++-----------------------------------+----------------------------------------------------------------------------+
+| Connect code and data by commands | | ``$ dvc run -n prepare -d images.zip -o images/ unzip -q images.zip``    |
+|                                   | | ``$ dvc run -n train -d images/ -d train.py -o model.p python train.py`` |
++-----------------------------------+----------------------------------------------------------------------------+
+| Make changes and reproduce        | | ``$ vi train.py``                                                        |
+|                                   | | ``$ dvc repro model.p.dvc``                                              |
++-----------------------------------+----------------------------------------------------------------------------+
+| Share code                        | | ``$ git add .``                                                          |
+|                                   | | ``$ git commit -m 'The baseline model'``                                 |
+|                                   | | ``$ git push``                                                           |
++-----------------------------------+----------------------------------------------------------------------------+
+| Share data and ML models          | | ``$ dvc remote add myremote -d s3://mybucket/image_cnn``                 |
+|                                   | | ``$ dvc push``                                                           |
++-----------------------------------+----------------------------------------------------------------------------+
+
+Visual Studio Code Extension
+============================
+
+|VS Code|
+
+To get use DVC as a GUI right from your VS Code IDE, install the `DVC Extension <https://marketplace.visualstudio.com/items?itemName=Iterative.dvc>`_ from the Marketplace.
+It currently features experiment tracking and data management, and more features (data pipeline support, etc.) are coming soon!
+
+|VS Code Extension Overview|
+
+    Note: You'll have to install core DVC on your system separately (as detailed
+    below). The Extension will guide you if needed.
+
+Installation
+============
+
+There are several ways to install DVC: in VS Code; using ``snap``, ``choco``, ``brew``, ``conda``, ``pip``; or with an OS-specific package.
+Full instructions are `available here <https://dvc.org/doc/get-started/install>`_.
+
+Snapcraft (Linux)
+-----------------
+
+|Snap|
+
+.. code-block:: bash
+
+   snap install dvc --classic
+
+This corresponds to the latest tagged release.
+Add ``--beta`` for the latest tagged release candidate,
+or ``--edge`` for the latest ``main`` version.
+
+Choco (Chocolatey/Windows)
+--------------------------
+
+|Choco|
+
+.. code-block:: bash
+
+   choco install dvc
+
+Brew (Homebrew/Mac OS)
+----------------------
+
+|Brew|
+
+.. code-block:: bash
+
+   brew install dvc
+
+Conda (Anaconda)
+----------------
+
+|Conda|
+
+.. code-block:: bash
+
+   conda install -c conda-forge mamba # installs much faster than conda
+   mamba install -c conda-forge dvc
+
+Depending on the remote storage type you plan to use to keep and share your data, you might need to
+install optional dependencies: `dvc-s3`, `dvc-azure`, `dvc-gdrive`, `dvc-gs`, `dvc-oss`, `dvc-ssh`.
+
+pip (PyPI)
+----------
+
+|PyPI|
+
+.. code-block:: bash
+
+   pip install dvc
+
+Depending on the remote storage type you plan to use to keep and share your data, you might need to specify
+one of the optional dependencies: ``s3``, ``gs``, ``azure``, ``oss``, ``ssh``. Or ``all`` to include them all.
+The command should look like this: ``pip install dvc[s3]`` (in this case AWS S3 dependencies such as ``boto3``
+will be installed automatically).
+
+To install the development version, run:
+
+.. code-block:: bash
+
+   pip install git+git://github.com/iterative/dvc
+
+Package
+-------
+
+|Packages|
+
+Self-contained packages for Linux, Windows, and Mac are available. The latest version of the packages
+can be found on the GitHub `releases page <https://github.com/iterative/dvc/releases>`_.
+
+Ubuntu / Debian (deb)
+^^^^^^^^^^^^^^^^^^^^^
+.. code-block:: bash
+
+   sudo wget https://dvc.org/deb/dvc.list -O /etc/apt/sources.list.d/dvc.list
+   wget -qO - https://dvc.org/deb/iterative.asc | sudo apt-key add -
+   sudo apt update
+   sudo apt install dvc
+
+Fedora / CentOS (rpm)
+^^^^^^^^^^^^^^^^^^^^^
+.. code-block:: bash
+
+   sudo wget https://dvc.org/rpm/dvc.repo -O /etc/yum.repos.d/dvc.repo
+   sudo rpm --import https://dvc.org/rpm/iterative.asc
+   sudo yum update
+   sudo yum install dvc
+
+Comparison to related technologies
+==================================
+
+#. Data Engineering tools such as `AirFlow <https://airflow.apache.org/>`_,
+   `Luigi <https://github.com/spotify/luigi>`_, and others - in DVC data,
+   model and ML pipelines represent a single ML project focused on data
+   scientists' experience.  Data engineering tools orchestrate multiple data
+   projects and focus on efficient execution. A DVC project can be used from
+   existing data pipelines as a single execution step.
+
+#. `Git-annex <https://git-annex.branchable.com/>`_ - DVC uses the idea of storing the content of large files (which should
+   not be in a Git repository) in a local key-value store, and uses file hardlinks/symlinks instead of
+   copying/duplicating files.
+
+#. `Git-LFS <https://git-lfs.github.com/>`_ - DVC is compatible with many
+   remote storage services (S3, Google Cloud, Azure, SSH, etc). DVC also
+   uses reflinks or hardlinks to avoid copy operations on checkouts; thus
+   handling large data files much more efficiently.
+
+#. Makefile (and analogues including ad-hoc scripts) - DVC tracks
+   dependencies (in a directed acyclic graph).
+
+#. `Workflow Management Systems <https://en.wikipedia.org/wiki/Workflow_management_system>`_ - DVC is a workflow
+   management system designed specifically to manage machine learning experiments. DVC is built on top of Git.
+
+#. `DAGsHub <https://dagshub.com/>`_ - online service to host DVC
+   projects.  It provides a useful UI around DVC repositories and integrates
+   other tools.
+
+#. `DVC Studio <https://studio.iterative.ai/>`_ - official online
+   platform for DVC projects.  It can be used to manage data and models, run
+   and track experiments, and visualize and share results.  Also, it
+   integrates with `CML (CI/CD for ML) <https://cml.dev/>`__ for training
+   models in the cloud or Kubernetes.
+
+
+Contributing
+============
+
+|Maintainability|
+
+Contributions are welcome! Please see our `Contributing Guide <https://dvc.org/doc/user-guide/contributing/core>`_ for more
+details. Thanks to all our contributors!
+
+|Contribs|
+
+Mailing List
+============
+
+Want to stay up to date? Want to help improve DVC by participating in our occasional polls? Subscribe to our `mailing list <https://sweedom.us10.list-manage.com/subscribe/post?u=a08bf93caae4063c4e6a351f6&id=24c0ecc49a>`_. No spam, really low traffic.
+
+Copyright
+=========
+
+This project is distributed under the Apache license version 2.0 (see the LICENSE file in the project root).
+
+By submitting a pull request to this project, you agree to license your contribution under the Apache license version
+2.0 to this project.
+
+Citation
+========
+
+|DOI|
+
+Iterative, *DVC: Data Version Control - Git for Data & Models* (2020)
+`DOI:10.5281/zenodo.012345 <https://doi.org/10.5281/zenodo.3677553>`_.
+
+Barrak, A., Eghan, E.E. and Adams, B. `On the Co-evolution of ML Pipelines and Source Code - Empirical Study of DVC Projects <https://mcis.cs.queensu.ca/publications/2021/saner.pdf>`_ , in Proceedings of the 28th IEEE International Conference on Software Analysis, Evolution, and Reengineering, SANER 2021. Hawaii, USA.
+
+
+.. |Banner| image:: https://dvc.org/img/logo-github-readme.png
+   :target: https://dvc.org
+   :alt: DVC logo
+
+.. |VS Code Extension Overview| image:: https://raw.githubusercontent.com/iterative/vscode-dvc/main/extension/docs/overview.gif
+   :alt: DVC Extension for VS Code
+
+.. |CI| image:: https://github.com/iterative/dvc/workflows/Tests/badge.svg?branch=main
+   :target: https://github.com/iterative/dvc/actions
+   :alt: GHA Tests
+
+.. |Maintainability| image:: https://codeclimate.com/github/iterative/dvc/badges/gpa.svg
+   :target: https://codeclimate.com/github/iterative/dvc
+   :alt: Code Climate
+
+.. |Coverage| image:: https://codecov.io/gh/iterative/dvc/branch/main/graph/badge.svg
+   :target: https://codecov.io/gh/iterative/dvc
+   :alt: Codecov
+
+.. |Snap| image:: https://img.shields.io/badge/snap-install-82BEA0.svg?logo=snapcraft
+   :target: https://snapcraft.io/dvc
+   :alt: Snapcraft
+
+.. |Choco| image:: https://img.shields.io/chocolatey/v/dvc?label=choco
+   :target: https://chocolatey.org/packages/dvc
+   :alt: Chocolatey
+
+.. |Brew| image:: https://img.shields.io/homebrew/v/dvc?label=brew
+   :target: https://formulae.brew.sh/formula/dvc
+   :alt: Homebrew
+
+.. |Conda| image:: https://img.shields.io/conda/v/conda-forge/dvc.svg?label=conda&logo=conda-forge
+   :target: https://anaconda.org/conda-forge/dvc
+   :alt: Conda-forge
+
+.. |PyPI| image:: https://img.shields.io/pypi/v/dvc.svg?label=pip&logo=PyPI&logoColor=white
+   :target: https://pypi.org/project/dvc
+   :alt: PyPI
+
+.. |Packages| image:: https://img.shields.io/github/v/release/iterative/dvc?label=deb|pkg|rpm|exe&logo=GitHub
+   :target: https://github.com/iterative/dvc/releases/latest
+   :alt: deb|pkg|rpm|exe
+
+.. |DOI| image:: https://img.shields.io/badge/DOI-10.5281/zenodo.3677553-blue.svg
+   :target: https://doi.org/10.5281/zenodo.3677553
+   :alt: DOI
+
+.. |Flowchart| image:: https://dvc.org/img/flow.gif
+   :target: https://dvc.org/img/flow.gif
+   :alt: how_dvc_works
+
+.. |Contribs| image:: https://contrib.rocks/image?repo=iterative/dvc
+   :target: https://github.com/iterative/dvc/graphs/contributors
+   :alt: Contributors
+
+.. |VS Code| image:: https://vsmarketplacebadge.apphb.com/version/Iterative.dvc.svg
+   :target: https://marketplace.visualstudio.com/items?itemName=Iterative.dvc
+   :alt: VS Code Extension
