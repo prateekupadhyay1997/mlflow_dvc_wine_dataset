@@ -19,7 +19,7 @@ def predict(data):
     model_dir_path = config["webapp_model_dir"]
     model = joblib.load(model_dir_path)
     prediction = model.predict(data)
-    return prediction
+    return prediction[0]
 def api_response(request):
     try:
         data = np.array([list(request.json.values())])
