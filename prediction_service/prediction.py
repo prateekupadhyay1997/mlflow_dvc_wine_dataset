@@ -13,7 +13,7 @@ class NotInRange(Exception):
         self.message=message
         super().__init__(self.message)
 
-class NotInColumn(Exception):
+class NotInCols(Exception):
     def __init__(self,message="Values entered are not in column"):
         self.message=message
         super().__init__(self.message)
