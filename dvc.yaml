@@ -23,7 +23,7 @@ stages:
     - src/train_and_evaluate.py
     - data/processed/test_wine_quality.csv
     - data/processed/train_wine_quality.csv
-    params:
+    params: 
     - estimators.ElasticNet.params.alpha
     - estimators.ElasticNet.params.l1_ratio
     # metrics:
